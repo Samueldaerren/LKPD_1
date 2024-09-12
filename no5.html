@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+</head>
+
+<body>
+    <h1>StopWatch</h1> 
+    <div id="countdown">10</div>
+    <br>
+    <button id="startButton" onclick="startCountdown()">Mulai</button>
+    <button id="stopButton" onclick="stopCountdown()" disabled>Berhenti</button>
+
+    <script>
+        // Menginisialisasi variabel untuk menghitung mundur, interval, dan alarm
+        let countdown = 10; // Durasi hitung mundur awal (dalam detik)
+        let interval; // Untuk menyimpan ID interval agar bisa dibersihkan nanti
+        let alarm = new Audio(''); // Membuat objek Audio untuk memainkan alarm (URL file alarm kosong saat ini)
+    
+        // Fungsi untuk memulai hitung mundur
+        function startCountdown() {
+            // Menonaktifkan tombol mulai dan mengaktifkan tombol berhenti
+            toggleButtons(true);
+    
+            // Menghapus kelas 'expired' dari elemen countdown (jika ada)
+            document.getElementById('countdown').classList.remove('expired');
+            
+            // Memperbarui tampilan hitung mundur dengan nilai awal
+            updateCountdownDisplay(countdown);
+    
+            // Mengatur interval untuk memperbarui hitung mundur setiap detik
+            interval = setInterval(() => {
+                countdown--; // Mengurangi nilai hitung mundur setiap detik
+                updateCountdownDisplay(countdown); // Memperbarui tampilan dengan nilai baru
+    
+                // Mengecek jika hitung mundur mencapai 0 atau kurang
+                if (countdown <= 0) {
+                    clearInterval(interval); // Menghentikan interval
+                    document.getElementById('countdown').textContent = 'Waktu Habis'; // Menampilkan pesan waktu habis
+                    document.getElementById('countdown').classList.add('expired'); // Menambahkan kelas 'expired'
+                    alarm.play(); // Memainkan alarm
+                    resetCountdown(); // Mengatur ulang hitung mundur
+                }
+            }, 1000); // Interval pengulangan setiap 1000 milidetik (1 detik)
+        }
+    
+        // Fungsi untuk menghentikan hitung mundur secara manual
+        function stopCountdown() {
+            clearInterval(interval); // Menghentikan interval
+            resetCountdown(); // Mengatur ulang hitung mundur
+        }
+    
+        // Fungsi untuk mengatur ulang hitung mundur ke nilai awal dan mengatur status tombol
+        function resetCountdown() {
+            toggleButtons(false); // Mengaktifkan tombol mulai dan menonaktifkan tombol berhenti
+            countdown = 10; // Mengatur ulang nilai hitung mundur ke 10 detik
+        }
+    
+        // Fungsi untuk memperbarui tampilan hitung mundur
+        function updateCountdownDisplay(value) {
+            document.getElementById('countdown').textContent = value; // Menampilkan nilai hitung mundur di elemen dengan id 'countdown'
+        }
+    
+        // Fungsi untuk mengatur status tombol berdasarkan apakah hitung mundur aktif atau tidak
+        function toggleButtons(isCounting) {
+            document.getElementById('startButton').disabled = isCounting; // Menonaktifkan tombol mulai jika hitung mundur aktif
+            document.getElementById('stopButton').disabled = !isCounting; // Menonaktifkan tombol berhenti jika hitung mundur tidak aktif
+        }
+    </script>
+    
+</body>
+
+</html>

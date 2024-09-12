@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Status Ayah</label>
+        <div>
+            <label for="hidup">masih hidup</label>
+            <input type="radio" name="tipe" id="hidup" value="hidup" onclick="changeForm(this)">
+        </div>
+        <div>
+            <label for="meninggal">meninggal</label>
+            <input type="radio" name="tipe" id="meninggal" value="meninggal" onclick="changeForm(this)">
+        </div>
+        <div>
+            <label for="tidak-diketahui">tidak diketahui</label>
+            <input type="radio" name="tipe" id="tidak-diketahui" value="tidak-diketahui" onclick="changeForm(this)">
+        </div>
+        <div id="wrap">
+            <div>
+                <label for="" id="pendidikan">pendidikan ayah</label><br>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <label for="" id="pekerjaan">pekerjaan ayah</label><br>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <label for="" id="pekerjaan">deskripsikan pekerjaan ayah</label><br>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <label for="" id="penghasilan">total penghasilan ayah perbulan</label><br>
+                <input type="text" name="" id="">
+            </div>
+            <div> 
+                <label for="" id="detail-ayah">detail ayah bekerja, berapa lama sudah bekerja, kondisi 
+                kesehatan, dan kondisi karir profesinya</label><br>
+                <input type="text" name="" id="">
+            </div>
+        </div>
+    </form>
+    <script>
+        function changeForm(e) {
+            var wrap = document.getElementById('wrap');
+            var detailAyah = document.getElementById('detail-ayah');
+
+            if (e.value == "hidup") {
+                wrap.style.display = "block";
+                detailAyah.innerText = "detail ayah bekerja, berapa lama sudah bekerja, kondisi kesehatan, dan kondisi karir profesinya";
+            } else if (e.value == "meninggal") {
+                wrap.style.display = "block";
+                detailAyah.innerText = "detail pekerjaan ayah semasa hidup";
+            } else if (e.value == "tidak-diketahui") {
+                wrap.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gambar</title>
+    <style>
+        .image-container {
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            max-width: 300px;
+            height: 280px;
+            display: none;
+            border: 5px solid transparent;
+        }
+
+        .image-container img.active {
+            display: block;
+        }
+
+        .opacity {
+            opacity: 1;
+        }
+
+        .opacity2 {
+            opacity: 0.5;
+        }
+
+        .opacity3 {
+            opacity: 0.2;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img id="img1" src="1.jpeg" alt="img 1" class="active square">
+        <img id="img2" src="2.jpeg" alt="img 2" class="square">
+        <img id="img3" src="3.jpeg" alt="img 3" class="square">
+    </div>
+    <div class="controls">
+        <label for="imageSelector">Pilih Foto:</label>
+        <select id="imageSelector">
+            <option value="img1">Image 1</option>
+            <option value="img2">Image 2</option>
+            <option value="img3">Image 3</option>
+        </select>
+    
+        <label for="shapeSelector">Pilih Bentuk:</label>
+        <select id="shapeSelector">
+            <option value="opacity">1</option>
+            <option value="opacity2">0.5</option>
+            <option value="opacity3">0.2</option>
+        </select>
+        <br><br>
+        <button type="submit" onclick="onchanceimg()">kirim</button>
+    </div>
+    
+    <script>  
+        document.getElementById('imageSelector').addEventListener('change', function() { 
+            var selectedValue = this.value; 
+            var images = document.querySelectorAll(".image-container img");
+     
+            images.forEach(function(img) { 
+                if (img.id === selectedValue) { 
+                    img.classList.add('active');
+                } else { 
+                    img.classList.remove('active');
+                }
+            });
+        });
+     
+        document.getElementById('shapeSelector').addEventListener('change', function() { 
+            var selectedShape = this.value; 
+            var activeImage = document.querySelector(".image-container img.active");
+     
+            activeImage.classList.remove("opacity", "opacity2", "opacity3"); 
+            activeImage.classList.add(selectedShape);
+        });
+    
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wrap {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <label for="">Pilih Kategori</label>
+        <div>
+            <label for="">Ya</label>
+            <input type="radio" name="tipe" id="" value="Ya" onclick="showHide(this)">
+        </div>
+        <div>
+            <label for="">Tidak</label>
+            <input type="radio" name="tipe" id="" value="Tidak" onclick="showHide(this)">
+        </div>
+        <div id="wrap">
+            <div>
+                <label for="" id="text">Nama Penyakit</label>
+                <input type="text" name="" id="">
+            </div>
+            <div>
+                <label for="" id="text">Status Penyakit</label>
+                <input type="text" name="" id="">
+            </div>
+        </div>
+    </form>
+
+    <form action="">
+        <div>
+            <label for="">jenjang pendidikan</label>
+            <select name='jenjang pendidikan'>
+                <option value='sd'>sd</option>
+                <option value='smp'>smp</option>
+                <option value='sma'>sma</option>
+              </select>
+        </div>
+        <div>
+            <label for="">tingkat sekolah</label>
+            <select name='tingkat sekolah'>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+                <option value='5'>5</option>
+                <option value='6'>6</option>
+              </select>
+        </div>
+        <div>
+            <label for="">tingkat sekolah</label>
+            <select name='tingkat sekolah'>
+                <option value='7'>7</option>
+                <option value='8'>8</option>
+                <option value='9'>9</option>
+              </select>
+        </div>
+        <div>
+            <label for="">tingkat sekolah</label>
+            <select name='tingkat sekolah'>
+                <option value='10'>10</option>
+                <option value='11'>11</option>
+                <option value='12'>12</option>
+              </select>
+        </div>
+    </form>
+    <script>
+        function showHide(e) {
+            if (e.value == "Ya") {
+                document.getElementById("wrap").style.display = "block";
+            } else {
+                document.getElementById("wrap").style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
